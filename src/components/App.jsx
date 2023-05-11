@@ -10,7 +10,7 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   const feedbacks = { good, neutral, bad };
-
+  // перебор отзывов
   const handleFeedback = option => {
     switch (option) {
       case 'good':
