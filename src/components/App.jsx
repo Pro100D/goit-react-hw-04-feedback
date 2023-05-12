@@ -14,13 +14,13 @@ const App = () => {
   const handleFeedback = option => {
     switch (option) {
       case 'good':
-        setGood(good + 1);
+        setGood(prevState => prevState + 1);
         break;
       case 'neutral':
-        setNeutral(neutral + 1);
+        setNeutral(prevState => prevState + 1);
         break;
       case 'bad':
-        setBad(bad + 1);
+        setBad(prevState => prevState + 1);
         break;
 
       default:
@@ -29,10 +29,7 @@ const App = () => {
   };
 
   const countTotalFeedback = () => {
-    const values = Object.values(feedbacks);
-    const valuesMap = values.reduce((acc, value) => acc + value, 0);
-
-    return valuesMap;
+    return Object.values(feedbacks).reduce((acc, value) => acc + value, 0);
   };
 
   const countPositiveFeedbackPercentage = () => {
@@ -56,7 +53,7 @@ const App = () => {
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countTotalFeedback}
+            total={countTotalFeedback()}
             positivePercentage={countPositiveFeedbackPercentage()}
           />
         ) : (
